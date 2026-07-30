@@ -61,12 +61,3 @@ jupyter notebook notebooks/lstm-serie-la-aurora.ipynb
 Los cuadernos fijan las semillas de NumPy y TensorFlow para ser reproducibles.
 Los datos de `data/processed/` son la salida exacta de la etapa 6 del pipeline
 del Laboratorio 1; para regenerarlos desde el crudo, correr ese pipeline.
-
-## Pendiente para la entrega final (2 de agosto)
-
-- Comparación del mejor LSTM contra el mejor modelo SARIMA del Laboratorio 1
-  por serie (punto 1.4).
-- Ejercicio 2 completo: extracción catch22 de las 7 series, matriz de
-  características, PCA, clustering, heatmap, correlaciones, mapa de distancias
-  e interpretación (2.1 a 2.13).
-- LSTM con las características de catch22 y comparación (2.14).
