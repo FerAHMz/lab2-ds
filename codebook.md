@@ -18,6 +18,10 @@ Guatemala, ya particionadas temporalmente. Se copian aquí sin ninguna
 modificación para que el Laboratorio 2 use exactamente los mismos conjuntos de
 entrenamiento y prueba.
 
+`data/processed/series_mensuales.csv` es la misma tabla sin particionar
+(los 210 meses completos, salida de la etapa 5), usada para la extracción de
+características con catch22.
+
 | Columna | Tipo | Descripción |
 |---------|------|-------------|
 | `fecha` | fecha (YYYY-MM-01) | Mes de la observación |
