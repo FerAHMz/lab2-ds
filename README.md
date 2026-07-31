@@ -22,6 +22,18 @@ entrenaron **dos configuraciones de LSTM con tuneo de hiperparámetros**:
 | Total de visitantes | `notebooks/lstm-serie-total.ipynb` | A: LSTM simple (1 capa) · B: LSTM apilada (2 capas) | Fernando Hernández 23645 |
 | Frontera La Aurora | `notebooks/lstm-serie-la-aurora.ipynb` | A: LSTM + Dropout · B: LSTM bidireccional | Fernando Rueda 23748 |
 
+Cada cuaderno cierra con la comparación del mejor LSTM contra el mejor modelo
+del Laboratorio 1 para su serie.
+
+## Similitud de las series con catch22
+
+`notebooks/catch22-similitud.ipynb` (Fernando Hernández 23645) extrae las 22
+características de catch22 de las siete series completas
+(`data/processed/series_mensuales.csv`), construye la matriz series ×
+características, la estandariza y la analiza con PCA, clustering jerárquico y
+k-means, mapa de calor, correlaciones entre características y mapa de
+distancias entre series, con la interpretación de los agrupamientos al final.
+
 En ambos casos el tuneo es una rejilla sobre el tamaño de ventana (lookback),
 las unidades de la capa LSTM y la tasa de aprendizaje, seleccionando por RMSE
 sobre un tramo de validación temporal (el 15% final del entrenamiento, sin
