@@ -34,6 +34,14 @@ características, la estandariza y la analiza con PCA, clustering jerárquico y
 k-means, mapa de calor, correlaciones entre características y mapa de
 distancias entre series, con la interpretación de los agrupamientos al final.
 
+`notebooks/lstm-catch22-la-aurora.ipynb` (Fernando Rueda 23748) resuelve el
+punto 2.14: construye un LSTM que usa las 22 características de catch22 como
+variables adicionales para la serie La Aurora, extraídas sobre cada ventana
+deslizante con pycatch22, y lo compara contra el mejor LSTM sin esas
+características. El hallazgo es que las características no mejoran el pronóstico,
+lo empeoran, por la poca cantidad de datos de entrenamiento y el cambio de
+régimen del tramo de prueba.
+
 En ambos casos el tuneo es una rejilla sobre el tamaño de ventana (lookback),
 las unidades de la capa LSTM y la tasa de aprendizaje, seleccionando por RMSE
 sobre un tramo de validación temporal (el 15% final del entrenamiento, sin
@@ -46,7 +54,7 @@ iterativo, contra una línea base naive estacional.
 ```
 data/raw/         Base_Migracion_2009-2026jun.xlsx, el crudo original del Lab 1
 data/processed/   series_train.csv y series_test.csv (salida de la etapa 6 del Lab 1)
-notebooks/        un cuaderno de modelado LSTM por serie
+notebooks/        dos cuadernos de LSTM (uno por serie), el de similitud con catch22 y el de LSTM con catch22
 reports/figuras/  figuras que exportan los cuadernos (no se versionan)
 requirements.txt  dependencias del proyecto
 codebook.md       descripción de las series y de la partición
@@ -54,20 +62,24 @@ codebook.md       descripción de las series y de la partición
 
 ## Cómo correrlo
 
-1. Crear el entorno e instalar dependencias (una sola vez):
+1. Crear el entorno e instalar dependencias (una sola vez). TensorFlow requiere
+Python 3.10 a 3.12, no funciona con 3.13 ni 3.14, así que conviene crear el
+entorno con una de esas versiones:
 
 ```
-python3 -m venv .venv
+python3.12 -m venv .venv
 source .venv/bin/activate        # macOS / Linux
 .venv\Scripts\activate           # Windows
 pip install -r requirements.txt
 ```
 
-2. Abrir y ejecutar los cuadernos de arriba hacia abajo:
+2. Abrir y ejecutar los cuadernos:
 
 ```
 jupyter notebook notebooks/lstm-serie-total.ipynb
 jupyter notebook notebooks/lstm-serie-la-aurora.ipynb
+jupyter notebook notebooks/catch22-similitud.ipynb
+jupyter notebook notebooks/lstm-catch22-la-aurora.ipynb
 ```
 
 Los cuadernos fijan las semillas de NumPy y TensorFlow para ser reproducibles.
